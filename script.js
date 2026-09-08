@@ -173,7 +173,7 @@ window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
 
     header.style.background =
-      "rgba(10, 10, 10, 0.96)";
+      "rgba(100, 103, 10, 0.96)";
 
   } else {
 
