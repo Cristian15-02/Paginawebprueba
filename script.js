@@ -1,3 +1,4 @@
+```javascript
 // ========================================
 // NOVA AGENCY — JAVASCRIPT
 // ========================================
@@ -17,8 +18,15 @@ if (menuButton && navLinks) {
 
     const isOpen = navLinks.classList.contains("open");
 
-    menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    menuButton.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+    menuButton.setAttribute(
+      "aria-expanded",
+      isOpen ? "true" : "false"
+    );
+
+    menuButton.setAttribute(
+      "aria-label",
+      isOpen ? "Cerrar menú" : "Abrir menú"
+    );
   });
 
 }
@@ -28,7 +36,9 @@ if (menuButton && navLinks) {
 // CERRAR MENÚ AL PULSAR UN ENLACE
 // ----------------------------------------
 
-document.querySelectorAll(".nav-links a").forEach((link) => {
+const navigationLinks = document.querySelectorAll(".nav-links a");
+
+navigationLinks.forEach((link) => {
 
   link.addEventListener("click", () => {
 
@@ -75,15 +85,28 @@ if (contactForm) {
     const email = formData.get("email");
     const mensaje = formData.get("mensaje");
 
+    // Cambia este correo por el correo real de tu agencia
     const agenciaEmail = "hola@nova-agency.com";
 
-    const asunto = encodeURIComponent("Nuevo contacto desde la página web");
-
-    const cuerpo = encodeURIComponent(
-      `Hola NOVA,\n\nNombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}\n\nEnviado desde la página web.`
+    const asunto = encodeURIComponent(
+      "Nuevo contacto desde la página web"
     );
 
-    window.location.href = `mailto:${agenciaEmail}?subject=${asunto}&body=${cuerpo}`;
+    const cuerpo = encodeURIComponent(
+      `Hola NOVA Agency,
+
+Nombre: ${nombre}
+Email: ${email}
+
+Mensaje:
+${mensaje}
+
+Enviado desde la página web.`
+    );
+
+    // Abre el programa de correo del visitante
+    window.location.href =
+      `mailto:${agenciaEmail}?subject=${asunto}&body=${cuerpo}`;
 
   });
 
@@ -91,18 +114,75 @@ if (contactForm) {
 
 
 // ----------------------------------------
-// ESTADO DEL HEADER AL HACER SCROLL
+// ANIMACIONES AL HACER SCROLL
+// ----------------------------------------
+
+const animatedElements = document.querySelectorAll(
+  ".service, .project, .stat"
+);
+
+const observerOptions = {
+  threshold: 0.12
+};
+
+const observer = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  },
+  observerOptions
+);
+
+
+// Preparar elementos para la animación
+
+animatedElements.forEach((element) => {
+
+  element.style.opacity = "0";
+  element.style.transform = "translateY(25px)";
+  element.style.transition =
+    "opacity .6s ease, transform .6s ease";
+
+  observer.observe(element);
+
+});
+
+
+// ----------------------------------------
+// CAMBIAR ESTADO DEL HEADER AL HACER SCROLL
 // ----------------------------------------
 
 const header = document.querySelector("header");
 
-const updateHeaderState = () => {
-  if (!header) return;
-  header.classList.toggle("scrolled", window.scrollY > 40);
-};
+window.addEventListener("scroll", () => {
 
-window.addEventListener("scroll", updateHeaderState);
-updateHeaderState();
+  if (!header) return;
+
+  if (window.scrollY > 50) {
+
+    header.style.background =
+      "rgba(10, 10, 10, 0.96)";
+
+  } else {
+
+    header.style.background =
+      "rgba(10, 10, 10, 0.88)";
+
+  }
+
+});
 
 
 // ----------------------------------------
@@ -110,5 +190,8 @@ updateHeaderState();
 // ----------------------------------------
 
 window.addEventListener("load", () => {
+
   document.body.classList.add("loaded");
+
 });
+```
