@@ -1,197 +1,119 @@
-```javascript
-// ========================================
-// NOVA AGENCY — JAVASCRIPT
-// ========================================
+document.addEventListener('DOMContentLoaded', function () {
 
+	/* -------------------------------------------------
+	   Menú móvil
+	------------------------------------------------- */
+	var header = document.querySelector('.site-header');
+	var navToggle = document.getElementById('nav-toggle');
+	var mainNav = document.getElementById('main-nav');
 
-// ----------------------------------------
-// MENÚ MÓVIL
-// ----------------------------------------
+	if (navToggle) {
+		navToggle.addEventListener('click', function () {
+			var isOpen = header.classList.toggle('nav-open');
+			navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+		});
 
-const menuButton = document.querySelector(".menu");
-const navLinks = document.querySelector(".nav-links");
+		mainNav.querySelectorAll('a').forEach(function (link) {
+			link.addEventListener('click', function () {
+				header.classList.remove('nav-open');
+				navToggle.setAttribute('aria-expanded', 'false');
+			});
+		});
+	}
 
-if (menuButton && navLinks) {
+	/* -------------------------------------------------
+	   Acordeón de preguntas frecuentes
+	------------------------------------------------- */
+	document.querySelectorAll('.faq-item').forEach(function (item) {
+		var question = item.querySelector('.faq-question');
 
-  menuButton.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+		question.addEventListener('click', function () {
+			var isOpen = item.classList.contains('open');
 
-    const isOpen = navLinks.classList.contains("open");
+			item.classList.toggle('open', !isOpen);
+			question.setAttribute('aria-expanded', String(!isOpen));
+		});
+	});
 
-    menuButton.setAttribute(
-      "aria-expanded",
-      isOpen ? "true" : "false"
-    );
+	/* -------------------------------------------------
+	   Contador de caracteres del mensaje
+	------------------------------------------------- */
+	var mensaje = document.getElementById('mensaje');
+	var charCount = document.getElementById('char-count');
 
-    menuButton.setAttribute(
-      "aria-label",
-      isOpen ? "Cerrar menú" : "Abrir menú"
-    );
-  });
+	if (mensaje && charCount) {
+		var updateCount = function () {
+			charCount.textContent = mensaje.value.length + ' / ' + mensaje.maxLength;
+		};
+		mensaje.addEventListener('input', updateCount);
+		updateCount();
+	}
 
-}
+	/* -------------------------------------------------
+	   Validación y envío del formulario de contacto
+	------------------------------------------------- */
+	var form = document.getElementById('contact-form');
+	var status = document.getElementById('form-status');
 
+	function setFieldError(field, hasError) {
+		var wrapper = field.closest('.field');
+		if (wrapper) wrapper.classList.toggle('has-error', hasError);
+	}
 
-// ----------------------------------------
-// CERRAR MENÚ AL PULSAR UN ENLACE
-// ----------------------------------------
+	function validate() {
+		var nombre = document.getElementById('nombre');
+		var email = document.getElementById('email');
+		var mensajeField = document.getElementById('mensaje');
+		var valid = true;
 
-const navigationLinks = document.querySelectorAll(".nav-links a");
+		var nombreOk = nombre.value.trim().length > 1;
+		setFieldError(nombre, !nombreOk);
+		valid = valid && nombreOk;
 
-navigationLinks.forEach((link) => {
+		var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+		setFieldError(email, !emailOk);
+		valid = valid && emailOk;
 
-  link.addEventListener("click", () => {
+		var mensajeOk = mensajeField.value.trim().length >= 20;
+		setFieldError(mensajeField, !mensajeOk);
+		valid = valid && mensajeOk;
 
-    if (navLinks) {
-      navLinks.classList.remove("open");
-    }
+		return valid;
+	}
 
-    if (menuButton) {
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.setAttribute("aria-label", "Abrir menú");
-    }
+	if (form) {
+		form.addEventListener('submit', function (e) {
+			e.preventDefault();
 
-  });
+			if (!validate()) {
+				status.textContent = 'Revisa los campos marcados antes de enviar el formulario.';
+				status.classList.remove('success');
+				return;
+			}
 
-});
+			var submitBtn = form.querySelector('button[type="submit"]');
+			var originalLabel = submitBtn.textContent;
 
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Enviando…';
+			status.textContent = '';
 
-// ----------------------------------------
-// AÑO AUTOMÁTICO DEL FOOTER
-// ----------------------------------------
+			// Simulación de envío: aquí es donde conectarías con tu backend
+			// o servicio de formularios real (fetch a tu API, Formspree, etc.)
+			setTimeout(function () {
+				var rol = form.querySelector('input[name="rol"]:checked').value;
+				var nombre = document.getElementById('nombre').value.trim();
 
-const yearElement = document.getElementById("year");
+				status.textContent = '¡Gracias, ' + nombre + '! Hemos recibido tu mensaje como '
+					+ (rol === 'marca' ? 'marca/agencia' : 'creador/a') + ' y te contestaremos en menos de 48 horas.';
+				status.classList.add('success');
 
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-
-// ----------------------------------------
-// FORMULARIO DE CONTACTO
-// ----------------------------------------
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-  contactForm.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const formData = new FormData(contactForm);
-
-    const nombre = formData.get("nombre");
-    const email = formData.get("email");
-    const mensaje = formData.get("mensaje");
-
-    // Cambia este correo por el correo real de tu agencia
-    const agenciaEmail = "hola@nova-agency.com";
-
-    const asunto = encodeURIComponent(
-      "Nuevo contacto desde la página web"
-    );
-
-    const cuerpo = encodeURIComponent(
-      `Hola NOVA Agency,
-
-Nombre: ${nombre}
-Email: ${email}
-
-Mensaje:
-${mensaje}
-
-Enviado desde la página web.`
-    );
-
-    // Abre el programa de correo del visitante
-    window.location.href =
-      `mailto:${agenciaEmail}?subject=${asunto}&body=${cuerpo}`;
-
-  });
-
-}
-
-
-// ----------------------------------------
-// ANIMACIONES AL HACER SCROLL
-// ----------------------------------------
-
-const animatedElements = document.querySelectorAll(
-  ".service, .project, .stat"
-);
-
-const observerOptions = {
-  threshold: 0.12
-};
-
-const observer = new IntersectionObserver(
-  (entries) => {
-
-    entries.forEach((entry) => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-
-        observer.unobserve(entry.target);
-
-      }
-
-    });
-
-  },
-  observerOptions
-);
-
-
-// Preparar elementos para la animación
-
-animatedElements.forEach((element) => {
-
-  element.style.opacity = "0";
-  element.style.transform = "translateY(25px)";
-  element.style.transition =
-    "opacity .6s ease, transform .6s ease";
-
-  observer.observe(element);
+				form.reset();
+				updateCount && updateCount();
+				submitBtn.disabled = false;
+				submitBtn.textContent = originalLabel;
+			}, 900);
+		});
+	}
 
 });
-
-
-// ----------------------------------------
-// CAMBIAR ESTADO DEL HEADER AL HACER SCROLL
-// ----------------------------------------
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-  if (!header) return;
-
-  if (window.scrollY > 50) {
-
-    header.style.background =
-      "rgba(10, 10, 10, 0.96)";
-
-  } else {
-
-    header.style.background =
-      "rgba(10, 10, 10, 0.88)";
-
-  }
-
-});
-
-
-// ----------------------------------------
-// EVITAR EL SALTO VISUAL AL CARGAR
-// ----------------------------------------
-
-window.addEventListener("load", () => {
-
-  document.body.classList.add("loaded");
-
-});
-```
