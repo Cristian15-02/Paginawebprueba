@@ -2,17 +2,17 @@
    Tokens
 --------------------------------------------- */
 :root{
-	--teal-950: #3B2536;
-	--teal-900: #4A2F42;
-	--teal-800: #5A3B50;
-	--sand-100: #FFEFD9;
-	--sand-050: #FFF8EE;
-	--gold-500: #FF8C42;
-	--gold-600: #E86A2E;
-	--rose-500: #E8447B;
-	--ink-900: #3A2630;
-	--muted-on-dark: #E0B9AC;
-	--muted-on-light: #7C5B58;
+	--teal-950: #7A3E32;
+	--teal-900: #934B3B;
+	--teal-800: #A95B47;
+	--sand-100: #FFE2BF;
+	--sand-050: #FFF8ED;
+	--gold-500: #FFC857;
+	--gold-600: #F2A93B;
+	--rose-500: #E85D75;
+	--ink-900: #4A2924;
+	--muted-on-dark: #F2C9AF;
+	--muted-on-light: #8A5A50;
 
 	--font-display: "Fraunces", Georgia, serif;
 	--font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -339,6 +339,24 @@ a{ color: inherit; }
 .form-status.success{ color: #2E7D5B; }
 
 /* ---------------------------------------------
+   Quiénes somos
+--------------------------------------------- */
+.about{
+	padding: 92px 28px;
+	display: grid;
+	grid-template-columns: 1.35fr .85fr;
+	gap: 64px;
+	align-items: center;
+	border-top: var(--border);
+}
+.about-copy h2{ font-size: clamp(2rem, 3.5vw, 3rem); color: var(--sand-050); max-width: 16ch; }
+.about-copy p{ color: var(--muted-on-dark); max-width: 62ch; margin: 0 0 16px; }
+.eyebrow{ display:inline-block; margin-bottom:14px; font-size:13px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-500); }
+.about-highlight{ background:var(--sand-100); color:var(--ink-900); padding:34px; border-radius:18px; border:1px solid rgba(74,41,36,.08); box-shadow:0 18px 45px rgba(58,30,24,.12); }
+.about-highlight strong{ display:block; font-family:var(--font-display); font-size:1.45rem; line-height:1.15; margin-bottom:12px; }
+.about-highlight p{ margin:0; color:var(--muted-on-light); font-size:15px; }
+
+/* ---------------------------------------------
    FAQ
 --------------------------------------------- */
 .faq{
@@ -444,6 +462,7 @@ a{ color: inherit; }
 		padding-top: 56px;
 	}
 	.field-row{ grid-template-columns: 1fr; }
+	.about{ grid-template-columns: 1fr; padding-top: 64px; padding-bottom: 64px; gap: 36px; }
 	.main-nav{ display: none; }
 	.header-cta{ display: none; }
 	.nav-toggle{ display: flex; }
@@ -467,3 +486,4 @@ a{ color: inherit; }
 	html{ scroll-behavior: auto; }
 	*{ transition: none !important; }
 }
+
