@@ -1,287 +1,170 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-ES">
 <head>
-  <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NOVA Agency — Agencia creativa especializada en estrategia, branding, diseño y marketing digital.">
-  <title>NOVA Agency | Ideas que hacen crecer marcas</title>
-
-  </head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto | Nexo — Marketing de creadores</title>
+<meta name="description" content="Escríbenos si quieres lanzar una campaña con creadores o si eres creador y quieres colaborar con marcas. Te respondemos en menos de 48 horas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-  <!-- NAVEGACIÓN -->
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#inicio" class="logo">NOVA<span>.</span></a>
+<header class="site-header">
+	<div class="wrap header-inner">
+		<a href="#top" class="logo">Nexo</a>
+		<nav class="main-nav" id="main-nav">
+			<a href="#top">Inicio</a>
+			<a href="#faq">Preguntas frecuentes</a>
+			<a href="#contacto">Contacto</a>
+		</nav>
+		<a class="btn btn-ghost header-cta" href="#contacto">Escríbenos</a>
+		<button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav">
+			<span></span><span></span><span></span>
+			<span class="sr-only">Abrir menú</span>
+		</button>
+	</div>
+</header>
 
-        <button class="menu" aria-label="Abrir menú">☰</button>
+<main id="top">
 
-        <ul class="nav-links">
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="#contacto" class="nav-button">Hablemos</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+	<section class="hero wrap" id="contacto">
+		<div class="hero-copy">
+			<h1>Hablemos de tu<br>próxima campaña.</h1>
+			<p class="lede">Tanto si buscas creadores para tu marca como si eres tú quien crea contenido y busca colaboraciones, cuéntanos qué necesitas. Un miembro del equipo te responde en menos de 48 horas laborables.</p>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-content">
-        <p class="eyebrow">Agencia creativa & digital</p>
+			<dl class="contact-facts">
+				<div>
+					<dt>Escríbenos</dt>
+					<dd><a href="mailto:hola@nexo-creators.com">hola@nexo-creators.com</a></dd>
+				</div>
+				<div>
+					<dt>Llámanos</dt>
+					<dd><a href="tel:+34910000000">+34 91 000 00 00</a></dd>
+				</div>
+				<div>
+					<dt>Oficina</dt>
+					<dd>Calle de Alcalá 20, 28014 Madrid</dd>
+				</div>
+			</dl>
 
-        <h1>
-          Creamos marcas que
-          <span>dejan huella.</span>
-        </h1>
+			<div class="social-row" aria-label="Redes sociales">
+				<a href="#" aria-label="Nexo en Instagram">Instagram</a>
+				<a href="#" aria-label="Nexo en LinkedIn">LinkedIn</a>
+				<a href="#" aria-label="Nexo en TikTok">TikTok</a>
+			</div>
+		</div>
 
-        <p class="hero-description">
-          Ayudamos a empresas y proyectos ambiciosos a crecer mediante estrategia,
-          branding, diseño y marketing digital.
-        </p>
+		<form class="contact-card" id="contact-form" novalidate>
+			<h2>Cuéntanos tu caso</h2>
 
-        <div class="buttons">
-          <a href="#contacto" class="btn btn-primary">Empezar un proyecto →</a>
-          <a href="#proyectos" class="btn btn-secondary">Ver nuestro trabajo</a>
-        </div>
-      </div>
-    </section>
+			<fieldset class="role-picker">
+				<legend>Soy...</legend>
+				<label class="role-option">
+					<input type="radio" name="rol" value="marca" checked>
+					<span>Una marca o agencia</span>
+				</label>
+				<label class="role-option">
+					<input type="radio" name="rol" value="creador">
+					<span>Un/a creador/a de contenido</span>
+				</label>
+			</fieldset>
 
-    <!-- SERVICIOS -->
-    <section class="services" id="servicios">
-      <div class="container">
-        <p class="eyebrow">Qué hacemos</p>
+			<div class="field">
+				<label for="nombre">Nombre completo</label>
+				<input type="text" id="nombre" name="nombre" autocomplete="name" required>
+				<p class="field-error" data-error-for="nombre">Escribe tu nombre.</p>
+			</div>
 
-        <h2 class="section-title">
-          Ideas con estrategia.
-          <span>Diseño con propósito.</span>
-        </h2>
+			<div class="field-row">
+				<div class="field">
+					<label for="email">Correo electrónico</label>
+					<input type="email" id="email" name="email" autocomplete="email" required>
+					<p class="field-error" data-error-for="email">Escribe un correo válido.</p>
+				</div>
+				<div class="field">
+					<label for="empresa">Empresa o marca <span class="opt">(opcional)</span></label>
+					<input type="text" id="empresa" name="empresa" autocomplete="organization">
+				</div>
+			</div>
 
-        <div class="service-grid">
-          <article class="service">
-            <div class="service-number">01 /</div>
-            <h3>Branding</h3>
-            <p>
-              Construimos identidades visuales sólidas, reconocibles y coherentes
-              para que tu marca destaque.
-            </p>
-          </article>
+			<div class="field">
+				<label for="mensaje">Mensaje</label>
+				<textarea id="mensaje" name="mensaje" rows="5" maxlength="600" required></textarea>
+				<div class="field-meta">
+					<p class="field-error" data-error-for="mensaje">Cuéntanos un poco más — al menos 20 caracteres.</p>
+					<span class="char-count" id="char-count">0 / 600</span>
+				</div>
+			</div>
 
-          <article class="service">
-            <div class="service-number">02 /</div>
-            <h3>Diseño web</h3>
-            <p>
-              Diseñamos páginas modernas, rápidas y orientadas a convertir visitas
-              en clientes.
-            </p>
-          </article>
+			<button type="submit" class="btn btn-primary">Enviar mensaje</button>
 
-          <article class="service">
-            <div class="service-number">03 /</div>
-            <h3>Marketing digital</h3>
-            <p>
-              Creamos estrategias de contenido y campañas digitales para aumentar
-              tu visibilidad y crecimiento.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
+			<p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+		</form>
+	</section>
 
-    <!-- NOSOTROS -->
-    <section class="about" id="nosotros">
-      <div class="container about-grid">
-        <div class="about-copy">
-          <p class="eyebrow">Sobre NOVA</p>
+	<section class="faq wrap" id="faq">
+		<h2>Preguntas frecuentes</h2>
+		<div class="faq-list">
 
-          <h2 class="section-title">
-            No hacemos ruido.
-            <span>Hacemos impacto.</span>
-          </h2>
+			<div class="faq-item">
+				<button class="faq-question" aria-expanded="false">
+					¿Cuánto tardáis en responder?
+				</button>
+				<div class="faq-answer">
+					<p>Como norma general, respondemos en menos de 48 horas laborables. Si tu campaña tiene una fecha límite ajustada, indícalo en el mensaje y lo priorizamos.</p>
+				</div>
+			</div>
 
-          <p>
-            Somos una agencia independiente que combina creatividad, estrategia
-            y tecnología para resolver problemas reales de negocio.
-          </p>
+			<div class="faq-item">
+				<button class="faq-question" aria-expanded="false">
+					Soy creador/a, ¿cómo empiezo a colaborar con marcas?
+				</button>
+				<div class="faq-answer">
+					<p>Escríbenos con el enlace a tu perfil principal y una idea de tu audiencia. Te añadimos a nuestro directorio y te avisamos cuando una marca encaje con tu contenido.</p>
+				</div>
+			</div>
 
-          <p>
-            Trabajamos de forma cercana con nuestros clientes para convertir
-            buenas ideas en marcas que conectan con las personas.
-          </p>
-        </div>
+			<div class="faq-item">
+				<button class="faq-question" aria-expanded="false">
+					¿Hay una inversión mínima para lanzar una campaña?
+				</button>
+				<div class="faq-answer">
+					<p>No hay un mínimo fijo: trabajamos tanto con marcas que empiezan con micro-creadores como con campañas de mayor alcance. Cuéntanos tu presupuesto orientativo y te proponemos opciones.</p>
+				</div>
+			</div>
 
-        <div class="stats">
-          <div class="stat">
-            <strong>50+</strong>
-            <span>Proyectos realizados</span>
-          </div>
+			<div class="faq-item">
+				<button class="faq-question" aria-expanded="false">
+					¿Puedo pedir una reunión en vez de escribir un mensaje largo?
+				</button>
+				<div class="faq-answer">
+					<p>Sí. Escríbenos brevemente qué necesitas y te enviamos un enlace para reservar una llamada de 20 minutos con el equipo.</p>
+				</div>
+			</div>
 
-          <div class="stat">
-            <strong>12</strong>
-            <span>Países alcanzados</span>
-          </div>
+		</div>
+	</section>
 
-          <div class="stat">
-            <strong>8</strong>
-            <span>Años de experiencia</span>
-          </div>
+</main>
 
-          <div class="stat">
-            <strong>100%</strong>
-            <span>Compromiso creativo</span>
-          </div>
-        </div>
-      </div>
-    </section>
+<footer class="site-footer">
+	<div class="wrap footer-inner">
+		<div class="footer-brand">
+			<span class="logo">Nexo</span>
+			<p>Conectamos marcas con creadores de contenido.</p>
+		</div>
+		<nav class="footer-nav">
+			<a href="#top">Inicio</a>
+			<a href="#faq">Preguntas frecuentes</a>
+			<a href="#contacto">Contacto</a>
+		</nav>
+		<p class="footer-copy">© 2026 Nexo. Todos los derechos reservados.</p>
+	</div>
+</footer>
 
-    <!-- PROYECTOS -->
-    <section id="proyectos">
-      <div class="container">
-        <p class="eyebrow">Proyectos seleccionados</p>
-
-        <h2 class="section-title">
-          Algunos trabajos de los que
-          <span>estamos orgullosos.</span>
-        </h2>
-
-        <div class="work-grid">
-          <article class="project">
-            <small>BRANDING · 2026</small>
-            <h3>ALMA Studio</h3>
-          </article>
-
-          <article class="project">
-            <small>WEB · 2026</small>
-            <h3>North House</h3>
-          </article>
-
-          <article class="project">
-            <small>ESTRATEGIA · 2025</small>
-            <h3>Forma Coffee</h3>
-          </article>
-
-          <article class="project">
-            <small>MARKETING · 2025</small>
-            <h3>Urban Lab</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <h2>¿Tienes una idea? Hagámosla realidad.</h2>
-          <a href="#contacto" class="btn btn-dark">Cuéntanos tu proyecto →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-      <div class="container contact-grid">
-        <div class="contact-text">
-          <p class="eyebrow">Contacto</p>
-
-          <h2 class="section-title">
-            Hablemos de
-            <span>tu próximo proyecto.</span>
-          </h2>
-
-          <p>
-            Cuéntanos qué tienes en mente. Te responderemos para conocer mejor
-            tu proyecto y ver cómo podemos ayudarte.
-          </p>
-
-          <div class="contact-links">
-            <a href="mailto:hola@nova-agency.com">hola@nova-agency.com</a>
-            <a href="tel:+34000000000">+34 000 000 000</a>
-            <span>Madrid · Barcelona · Online</span>
-          </div>
-        </div>
-
-        <form id="contactForm">
-          <label>
-            Nombre
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-          </label>
-
-          <label>
-            Email
-            <input type="email" name="email" placeholder="tu@email.com" required>
-          </label>
-
-          <label>
-            Cuéntanos tu proyecto
-            <textarea name="mensaje" rows="7"
-              placeholder="¿Qué necesitas?" required></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary">
-            Enviar mensaje →
-          </button>
-
-          <small>
-            El formulario abrirá tu aplicación de correo para enviar el mensaje.
-          </small>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> NOVA Agency</span>
-      <span>Ideas que hacen crecer marcas.</span>
-    </div>
-  </footer>
-
-  <script>
-    // Menú móvil
-    const menu = document.querySelector(".menu");
-    const navLinks = document.querySelector(".nav-links");
-
-    menu.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-      });
-    });
-
-    // Año automático
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Formulario de contacto
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const data = new FormData(this);
-      const nombre = data.get("nombre");
-      const email = data.get("email");
-      const mensaje = data.get("mensaje");
-
-      const subject = encodeURIComponent("Nuevo contacto desde la web");
-      const body = encodeURIComponent(
-        `Nombre: ${nombre}\nEmail: ${email}\n\nMensaje:\n${mensaje}`
-      );
-
-      window.location.href =
-        `mailto:hola@nova-agency.com?subject=${subject}&body=${body}`;
-    });
-  </script>
-
-	<script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
